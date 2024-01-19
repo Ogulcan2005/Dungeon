@@ -74,6 +74,30 @@ else:
         print('Helaas is de zombie te sterk voor je.')
         print('Game over.')
         exit()
+
+print("Na het gevecht met de zombie kom je een nieuwe vijand tegen in de zelfde kamer")
+
+new_enemy_attack = 2
+new_enemy_defense = 0
+new_enemy_health = 3
+
+enemy_hit_damage = (new_enemy_attack - player_defense)
+if enemy_hit_damage <= 0:
+    print('Jij hebt een te goede verdedigign voor de vijand, hij kan je geen schade doen.')
+else:
+    enemy_attack_amount = math.ceil(player_health / enemy_hit_damage)
+    
+    player_hit_damage = (player_attack - new_enemy_defense)
+    player_attack_amount = math.ceil(new_enemy_health / player_hit_damage)
+
+    if player_attack_amount < enemy_attack_amount:
+        print(f'In {player_attack_amount} rondes versla je de vijand.')
+        print(f'Je health is nu {player_health - enemy_attack_amount}.')
+    else:
+        print('Helaas is de vijand te sterk voor je.')
+        print('Game over.')
+        exit()
+
 print('')
 time.sleep(1)
 
