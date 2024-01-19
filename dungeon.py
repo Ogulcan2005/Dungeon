@@ -1,4 +1,4 @@
-import time, math
+import time, math, random
 
 player_attack = 1
 player_defense = 0
@@ -14,28 +14,41 @@ time.sleep(1)
 # === [kamer 2] === #
 print('Je stapt door de deur heen en je ziet een standbeeld voor je.')
 print('Het standbeeld heeft een sleutel vast.')
-print('Op zijn borst zit een numpad met de toesten 9 t/m 0.')
-print('Daarboven zie je een som staan 11+15=?')
-antwoord = int(input('Wat toest je in?'))
+print('Op zijn borst zit een numpad met de toetsen 9 t/m 0.')
 
-if antwoord == 26:
-    print('Het stadbeeld laat de sleutel vallen en je pakt het op')
+getal1 = random.randint(10, 25)
+getal2 = random.randint(-5, 75)
+som = getal1 + getal2
+
+print(f'Daarboven zie je een som staan {getal1}+{getal2}=?')
+antwoord = int(input('Wat toets je in?'))
+
+if antwoord == som:
+    print('Het standbeeld laat de sleutel vallen en je pakt het op.')
 else:
-    print('Er gebeurt niets....')
+    print(f'Helaas, het correcte antwoord was {som}. Er gebeurt niets....')
 
-print('Je zie een deur achter het standbeeld.')
+print('Je ziet een deur achter het standbeeld.')
 print('')
 time.sleep(1)
 
 # === [kamer 3] === #
-item = 'schild'
-player_defense += 1
 
-print('Je duwt hem open en stap een hele lange kamer binnen.')
+items = ['schild', 'zwaard']
+item = random.choice(items)
+if item == 'schild':
+    player_defense += 1
+else:
+    player_attack += 2
+print('Je duwt hem open en stapt een hele lange kamer binnen.')
 print(f'In deze kamer staat een tafel met daarop een {item}.')
-print(f'Je pakt het {item} op en houd het bij je.')
+print(f'Je pakt het {item} op en houdt het bij je.')
+if item == 'schild':
+    print(f'Het {item} geeft je meer defense. Je defense is nu {player_defense}.')
+else:
+    print(f'Het {item} geeft je een meer attack. Je attack is nu {player_attack}.')
 print('Op naar de volgende deur.')
-print('')
+print("")
 time.sleep(1)
 
 # === [kamer 4] === #
@@ -56,7 +69,7 @@ else:
 
     if player_attack_amount < zombie_attack_amount:
         print(f'In {player_attack_amount} rondes versla je de zombie.')
-        print(f'Je health is nu {player_health}.')
+        print(f'Je health is nu {player_health - zombie_attack_amount}.')
     else:
         print('Helaas is de zombie te sterk voor je.')
         print('Game over.')
