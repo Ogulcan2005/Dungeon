@@ -4,6 +4,7 @@ from functions import *
 player_attack = 1
 player_defense = 0
 player_health = 3
+ruppee = 0
 
 # === [kamer 1] === #
 print("Kamer 1\n")
@@ -12,6 +13,14 @@ print('Het ruikt hier muf en vochtig.')
 print('Je ziet een deur voor je.')
 print('')
 time.sleep(1)
+
+# === [kamer 7] === #
+print("Kamer 7\n")
+print("Je vindt in de volgende kamer een steen")
+print("de naam van de steen is ruppee en je pakt het op")
+ruppee += 1
+print(f"je hebt nu in totaal {ruppee}")
+print("op naar de volgende kamer\n")
 
 # === [kamer 2] === #
 print("Kamer 2\n")
@@ -41,9 +50,9 @@ kamer = input('Kies naar welke kamer je wilt gaan (6 of 3): ')
 if kamer == "6":
     # === [kamer 6] === #
     kamer_6(player_defense, player_attack, player_health)
-    player_defense, player_attack, item = kamer_3(player_defense, player_attack)
+    item, player_defense, player_attack, ruppee = kamer_3(player_defense, player_attack, ruppee)
 else:
-    player_defense, player_attack, item = kamer_3(player_defense, player_attack)
+    item, player_defense, player_attack, ruppee = kamer_3(player_defense, player_attack, ruppee)
 
 # === [kamer 4] === #
 print("Kamer 4\n")

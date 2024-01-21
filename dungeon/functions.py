@@ -1,31 +1,36 @@
 import random
 import time
-
-def kamer_3(player_defense, player_attack):
-    items = ['schild', 'zwaard']
-    item = random.choice(items)
-    
-    if item == 'schild':
-        player_defense += 1
-    else:
-        player_attack += 2
-    
-    print('Je duwt hem open en stapt een hele lange kamer binnen.')
-    print(f'In deze kamer staat een tafel met daarop een {item}.')
-    print(f'Je pakt het {item} op en houdt het bij je.')
-    
-    if item == 'schild':
-        print(f'Het {item} geeft je meer defense. Je defense is nu {player_defense}.')
-    else:
-        print(f'Het {item} geeft je meer attack. Je attack is nu {player_attack}.')
-    
-    print('Op naar de volgende deur.')
-    print("")
-    time.sleep(1)
-    
-    return player_defense, player_attack, item
-
 import math
+
+def kamer_3(player_defense, player_attack, ruppees):
+    print("Kamer 3\n")
+    print(f'Je loopt nu binnen de volgende kamer en vind daar binnen een goblin merchant')
+    print(f'De goblin merchant heeft als koopwaard een zwaard en een schild, elk voor 1 ruppee.')
+
+    while True:
+        print(f'Je hebt {ruppees} ruppees.')
+        print('1. Koop het schild (1 ruppee)')
+        print('2. Koop het zwaard (1 ruppee)')
+        keuze = input('Wat wil je doen? (1/2): ')
+
+        if keuze == '1':
+            if ruppees >= 1:
+                player_defense += 1
+                ruppees -= 1
+                print('Je hebt het schild gekocht. Je defense is nu', player_defense)
+                return 'schild', player_defense, player_attack, ruppees
+            else:
+                print('Je hebt niet genoeg ruppees om het schild te kopen.')
+        elif keuze == '2':
+            if ruppees >= 1:
+                player_attack += 2
+                ruppees -= 1
+                print('Je hebt het zwaard gekocht. Je attack is nu', player_attack)
+                return 'zwaard', player_defense, player_attack, ruppees
+            else:
+                print('Je hebt niet genoeg ruppees om het zwaard te kopen.')
+
+
 
 def kamer_6(player_defense, player_attack, player_health):
     print("Kamer 6\n")
