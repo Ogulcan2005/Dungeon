@@ -4,6 +4,7 @@ from functions import *
 player_attack = 1
 player_defense = 0
 player_health = 3
+item = None
 ruppee = 0
 
 # === [kamer 1] === #
@@ -21,6 +22,15 @@ print("de naam van de steen is ruppee en je pakt het op")
 ruppee += 1
 print(f"je hebt nu in totaal {ruppee}")
 print("op naar de volgende kamer\n")
+
+print("je kunt nu 2 richtingen kiezen")
+print("je kunt door gaan via kamer 2 of gelijk gaan naar kamer 3")
+kamer2_3 = input("welke kamer wil je naar toe gaan")
+if kamer2_3 == "3":
+    item, player_defense, player_attack, ruppee = kamer_3(player_defense, player_attack, ruppee)
+elif kamer2_3 == "2":
+    print("")
+
 
 # === [kamer 2] === #
 print("Kamer 2\n")
@@ -49,8 +59,8 @@ kamer = input('Kies naar welke kamer je wilt gaan (6 of 3): ')
 
 if kamer == "6":
     # === [kamer 6] === #
-    kamer_6(player_defense, player_attack, player_health)
-    item, player_defense, player_attack, ruppee = kamer_3(player_defense, player_attack, ruppee)
+    kamer_6()
+
 else:
     item, player_defense, player_attack, ruppee = kamer_3(player_defense, player_attack, ruppee)
 
@@ -60,7 +70,7 @@ bandit_attack = 2
 bandit_defense = 0
 bandit_health = 3
 
-print("in kamer 4 vind je een treusure bandit\n")
+print("in kamer 4 vind je een treasure bandit\n")
 
 enemy_hit_damage = (bandit_attack - player_defense)
 if enemy_hit_damage <= 0:
